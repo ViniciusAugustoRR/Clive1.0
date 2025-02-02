@@ -1,0 +1,196 @@
+﻿@page "/doclist"
+@using Clive.Models
+@using System.Drawing
+
+<div class="card">
+    <legend>Choose your file types:</legend>
+
+    <div id="extesion_select_boxgroup">
+        @foreach (var ext in extensions)
+        {
+            <div>
+                <input type="checkbox" @bind="ext.isSelected" id="@ext.Id" name="@ext.name" />
+                <label for="@ext.Id">.@ext.name</label>
+            </div>
+        }
+
+    </div>
+</div>
+
+
+<div class="d-flex">
+    <button class="mr-auto p2 btn btn-primary" @onclick="retrieveList">Check your files</button>
+    <button class="ml-auto p2 btn btn-primary" @onclick="DeleteFiles">Delete</button>
+</div>
+
+
+<div class="card">
+    <legend>File List:</legend>
+    <div id="doc_list">
+        <table>
+            <thead>
+                <tr>
+                    <th> - </th>
+                    <th>Delete</th>
+                    <th>Name</th>
+                    <th>Icon</th>
+                    <th>Creation Date</th>
+                    <th>Extension</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var file in files)
+                {
+                    <tr>
+                        <td>@file.Id</td>
+                        <td> <input type="checkbox" @bind="file.isSelected" style="transform: scale(1.5);" /> </td>
+                        <td>@file.name</td>
+                        <td><img src="@file.icon"/></td>
+                        <td>@file.createdOn</td>
+                        <td>.@file.extension</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+
+@code {
+    #region RETRIEVE LIST
+    List<RetrievedFile> files = new List<RetrievedFile>();
+    private List<Extesion> extensions = new List<Extesion>()
+    {
+        new Extesion{ Id = 1, name = "pdf"},
+        new Extesion{ Id = 2, name = "zip"},
+        new Extesion{ Id = 3, name = "txt"},
+        new Extesion{ Id = 4, name = "jpeg"},
+        new Extesion{ Id = 5, name = "png"},
+        new Extesion{ Id = 6, name = "exe"}
+    };
+    List<string> filteredFilePaths = new List<string>();
+
+    private void retrieveList()
+    {
+        List<string> selectedExt = extensions.Where(x => x.isSelected == true).Select(x => x.name).ToList();
+
+
+        string folderPath = @"C:\Users\jonhe\Downloads";
+        List<string> filePaths = Directory.GetFiles(folderPath).ToList();
+
+        foreach (string path in filePaths)
+        {
+            if (selectedExt.Contains(path.Split('.')[1]))
+                filteredFilePaths.Add(path);
+        }
+
+        var counter = 0;
+        foreach (string path in filteredFilePaths)
+        {
+            counter++;
+
+            Icon ic = Icon.ExtractAssociatedIcon(path);
+            using Bitmap bitmap = ic.ToBitmap();
+            using MemoryStream ms = new MemoryStream();
+            bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+
+            files.Add(
+                new RetrievedFile()
+                    {
+                        Id = counter,
+                        name = Path.GetFileName(path),
+                        createdOn = File.GetCreationTime(path),
+                        extension = path.Split('.')[1],
+                        icon = $"data:image/png;base64,{Convert.ToBase64String(ms.ToArray())}"
+                    }
+            );
+        }
+
+
+    }
+
+    #endregion
+
+}
+
+
+@code{
+    #region DELETE FILES
+
+    public void DeleteFiles()
+    {
+        foreach (var file in files)
+        {
+            if (file.isSelected)
+                File.Delete(filteredFilePaths[file.Id]);
+
+        }
+
+    }
+
+    #endregion
+
+}
+
+<style>
+
+    label {
+      font:
+        1rem 'Fira Sans',
+        sans-serif;
+    }
+
+    input {
+      margin: 0.4rem;
+    }
+
+    .card {
+      /* Add shadows to create the "card" effect */
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    /* On mouse-over, add a deeper shadow */
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+    /* Add some padding inside the card container */
+    .container {
+      padding: 2px 16px;
+    }
+
+    /* Import Google Fonts */
+    /* Apply font to the whole card and table */
+    #doc_list {
+        font-family: 'Roboto', sans-serif; /* More interesting font */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px; /* Adds vertical spacing between rows */
+    }
+
+    td {
+        padding: 10px; /* Adds spacing between text and cell borders */
+        text-align: left;
+        border: 1px solid #ddd; /* Light gray border for cells */
+    }
+
+    th {
+        background-color: #f4f4f4; /* Light gray background for the header */
+        font-weight: bold;
+    }
+
+    tbody{
+        background-color: #ffffff;
+    }
+
+    
+</style>
+
