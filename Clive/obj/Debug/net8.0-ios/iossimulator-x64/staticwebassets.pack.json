@@ -1,27 +1,27 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\jonhe\\source\\repos\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\bundle\\Clive.styles.css",
+      "Id": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\bundle\\Clive.styles.css",
       "PackagePath": "staticwebassets\\Clive.styles.css"
     },
     {
-      "Id": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\css\\app.css",
+      "Id": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\index.html",
+      "Id": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RJhKc66cFZCwFN+WYaS4zTVbhibDUqT66ZYGVq1qFVs=",
+  "Hash": "RFTZfBGKPlw0eT2FUw+TVc7Q1gV8Wn6iUd5lKu9X3FU=",
   "Source": "Clive",
   "BasePath": "/",
   "Mode": "Root",
@@ -10,17 +10,17 @@
     {
       "Name": "Clive\\wwwroot",
       "Source": "Clive",
-      "ContentRoot": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\",
       "BasePath": "/",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\jonhe\\source\\repos\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\bundle\\Clive.styles.css",
+      "Identity": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\bundle\\Clive.styles.css",
       "SourceId": "Clive",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jonhe\\source\\repos\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\bundle\\",
       "BasePath": "/",
       "RelativePath": "Clive.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jonhe\\source\\repos\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\bundle\\Clive.styles.css"
+      "OriginalItemSpec": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\bundle\\Clive.styles.css"
     },
     {
-      "Identity": "C:\\Users\\jonhe\\source\\repos\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\projectbundle\\Clive.bundle.scp.css",
+      "Identity": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\projectbundle\\Clive.bundle.scp.css",
       "SourceId": "Clive",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jonhe\\source\\repos\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\projectbundle\\",
       "BasePath": "/",
       "RelativePath": "Clive.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jonhe\\source\\repos\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\projectbundle\\Clive.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\obj\\Debug\\net8.0-ios\\iossimulator-x64\\scopedcss\\projectbundle\\Clive.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\css\\app.css",
+      "Identity": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\css\\app.css",
       "SourceId": "Clive",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/app.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\css\\app.css"
     },
     {
-      "Identity": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "Clive",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "Clive",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\favicon.png",
       "SourceId": "Clive",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
-      "Identity": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\index.html",
       "SourceId": "Clive",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonhe\\source\\repos\\Clive\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jonhe\\OneDrive\\Área de Trabalho\\CliveRepo\\Clive1.0\\Clive\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "index.html",
       "AssetKind": "All",
