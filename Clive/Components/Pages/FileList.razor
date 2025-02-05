@@ -6,6 +6,11 @@
     <legend>Choose your file types:</legend>
 
     <div id="extesion_select_boxgroup">
+
+        <div>
+            <input type="checkbox" id="selectall" name="SelectAll" @onchange="allSelectedChecked" />
+            <label for="SelectAll">Select All</label>
+        </div>
         @foreach (var ext in extensions)
         {
             <div>
@@ -19,7 +24,7 @@
 
 
 <div class="d-flex">
-    <button class="mr-auto p2 btn btn-primary" @onclick="retrieveList">Check your files</button>
+    <button class="mr-auto p2 btn btn-primary" @onclick="SetList">Check your files</button>
     <button class="ml-auto p2 btn btn-primary" @onclick="DeleteFiles">Delete</button>
 </div>
 
@@ -27,6 +32,7 @@
 <div class="card">
     <legend>File List:</legend>
     <div id="doc_list">
+       
         <table>
             <thead>
                 <tr>
@@ -39,27 +45,44 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var file in files)
+                
+                @if(files.Count == 0)
                 {
                     <tr>
-                        <td>@file.Id</td>
-                        <td> <input type="checkbox" @bind="file.isSelected" style="transform: scale(1.5);" /> </td>
-                        <td>@file.name</td>
-                        <td><img src="@file.icon"/></td>
-                        <td>@file.createdOn</td>
-                        <td>.@file.extension</td>
+                        <td colspan="2"> </td>
+                        <td colspan="2"> </td>
+                        <td colspan="2"> </td>
+                        <td colspan="2"> </td>
+                        <td colspan="2"> </td>
+                        <td colspan="2"> </td>
                     </tr>
+                }else {
+                    @foreach (var file in files)
+                    {
+                        <tr>
+                            <td>@file.Id</td>
+                            <td> <input type="checkbox" @bind="file.isSelected" style="transform: scale(1.5);" /> </td>
+                            <td>@file.name</td>
+                            <td><img src="@file.icon"/></td>
+                            <td>@file.createdOn</td>
+                            <td>.@file.extension</td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>
-
+        
     </div>
 </div>
 
 
 
+
 @code {
     #region RETRIEVE LIST
+
+
+
     List<RetrievedFile> files = new List<RetrievedFile>();
     private List<Extesion> extensions = new List<Extesion>()
     {
@@ -72,10 +95,35 @@
     };
     List<string> filteredFilePaths = new List<string>();
 
+    private void allSelectedChecked(ChangeEventArgs e)
+    {
+        foreach (var ext in extensions){
+            ext.isSelected = (bool)e.Value? true: false ;
+        }
+        StateHasChanged();
+    }
+
+    private void ClearList()
+    {
+        files = new List<RetrievedFile>();
+        filteredFilePaths = new List<string>();
+    }
+
+    private void SetList()
+    {
+        ClearList();
+
+        retrieveList();
+        StateHasChanged();
+
+    }
+
     private void retrieveList()
     {
         List<string> selectedExt = extensions.Where(x => x.isSelected == true).Select(x => x.name).ToList();
 
+        if (selectedExt.Count == 0)
+            return;
 
         string folderPath = @"C:\Users\jonhe\Downloads";
         List<string> filePaths = Directory.GetFiles(folderPath).ToList();
@@ -121,13 +169,17 @@
 
     public void DeleteFiles()
     {
-        foreach (var file in files)
+        try
         {
-            if (file.isSelected)
-                File.Delete(filteredFilePaths[file.Id]);
-
+            foreach (var file in files)
+            {
+                if (file.isSelected)
+                    File.Delete(filteredFilePaths[file.Id]);
+            }
+        }catch(Exception e)
+        {
+            throw e;
         }
-
     }
 
     #endregion
