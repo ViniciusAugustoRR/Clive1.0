@@ -9,7 +9,7 @@
 
         <div>
             <input type="checkbox" id="selectall" name="SelectAll" @onchange="allSelectedChecked" />
-            <label for="SelectAll">Select All-</label>
+            <label for="SelectAll">Select All</label>
         </div>
         @foreach (var ext in extensions)
         {
@@ -18,6 +18,13 @@
                 <label for="@ext.Id">.@ext.name</label>
             </div>
         }
+
+
+        <div>
+            <label for="horario_exec">Horario de checagem:</label>
+            <input type="time" name="horario_exec"/>
+        </div>
+
 
     </div>
 </div>
@@ -82,7 +89,6 @@
     #region RETRIEVE LIST
 
 
-
     List<RetrievedFile> files = new List<RetrievedFile>();
     private List<Extesion> extensions = new List<Extesion>()
     {
@@ -94,6 +100,7 @@
         new Extesion{ Id = 6, name = "exe"}
     };
     List<string> filteredFilePaths = new List<string>();
+
 
     private void allSelectedChecked(ChangeEventArgs e)
     {
@@ -115,7 +122,6 @@
 
         retrieveList();
         StateHasChanged();
-
     }
 
     private void retrieveList()
@@ -159,10 +165,11 @@
 
     }
 
+    
+
     #endregion
 
 }
-
 
 @code{
     #region DELETE FILES
