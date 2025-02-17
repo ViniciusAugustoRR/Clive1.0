@@ -1,6 +1,8 @@
 ﻿@page "/doclist"
+@using Clive.Logic
 @using Clive.Models
 @using System.Drawing
+@inject ConfigurationService configService
 
 <div class="card">
     <legend>Choose your file types:</legend>
@@ -9,7 +11,7 @@
 
         <div>
             <input type="checkbox" id="selectall" name="SelectAll" @onchange="allSelectedChecked" />
-            <label for="SelectAll">Select All-</label>
+            <label for="SelectAll">Select All</label>
         </div>
         @foreach (var ext in extensions)
         {
@@ -19,6 +21,13 @@
             </div>
         }
 
+
+        <div>
+            <label for="horario_exec">Horario de checagem:</label>
+            <input type="time" name="horario_exec"/>
+        </div>
+
+
     </div>
 </div>
 
@@ -26,6 +35,7 @@
 <div class="d-flex">
     <button class="mr-auto p2 btn btn-primary" @onclick="SetList">Check your files</button>
     <button class="ml-auto p2 btn btn-primary" @onclick="DeleteFiles">Delete</button>
+    <button class="ml-auto p2 btn btn-primary" @onclick="configService.updateList">UpdateList</button>
 </div>
 
 
@@ -82,7 +92,6 @@
     #region RETRIEVE LIST
 
 
-
     List<RetrievedFile> files = new List<RetrievedFile>();
     private List<Extesion> extensions = new List<Extesion>()
     {
@@ -94,6 +103,7 @@
         new Extesion{ Id = 6, name = "exe"}
     };
     List<string> filteredFilePaths = new List<string>();
+
 
     private void allSelectedChecked(ChangeEventArgs e)
     {
@@ -115,7 +125,6 @@
 
         retrieveList();
         StateHasChanged();
-
     }
 
     private void retrieveList()
@@ -159,10 +168,11 @@
 
     }
 
+    
+
     #endregion
 
 }
-
 
 @code{
     #region DELETE FILES

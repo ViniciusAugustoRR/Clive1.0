@@ -23,17 +23,15 @@ namespace Clive.Logic
             {
                 _logger.LogInformation($"Background Task Running at {DateTime.Now}");
 
-                // Place your script logic here
-                await RunYourScript();
+                await DeleteCheck();
 
-                // Wait for an hour before running again
                 await Task.Delay(TimeSpan.FromHours(1), stoppingToken);
             }
         }
 
-        private Task RunYourScript()
+        private Task DeleteCheck()
         {
-            // Your script logic here
+
             Console.WriteLine("Executing background task...");
             return Task.CompletedTask;
         }
