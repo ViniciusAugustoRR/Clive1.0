@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Clive.Logic;
+using Microsoft.Extensions.Logging;
 
 namespace Clive
 {
@@ -15,6 +16,7 @@ namespace Clive
                 });
 
             builder.Services.AddMauiBlazorWebView();
+            builder.Services.AddSingleton<ConfigurationService>();
 
 #if DEBUG
     		builder.Services.AddBlazorWebViewDeveloperTools();
