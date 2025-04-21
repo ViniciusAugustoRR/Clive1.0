@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,14 @@ namespace Clive.Logic
 {
     public class BackGroundCheck : BackgroundService
     {
+        private readonly IConfigurationService _configService;
         private readonly ILogger<BackGroundCheck> _logger;
 
         public BackGroundCheck(ILogger<BackGroundCheck> logger)
         {
             _logger = logger;
         }
+       
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {

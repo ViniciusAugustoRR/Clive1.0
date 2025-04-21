@@ -2,7 +2,8 @@
 @using Clive.Logic
 @using Clive.Models
 @using System.Drawing
-@inject ConfigurationService configService
+@using MudBlazor
+@inject ManagerService managerService
 
 <div class="card">
     <legend>Choose your file types:</legend>
@@ -33,9 +34,9 @@
 
 
 <div class="d-flex">
-    <button class="mr-auto p2 btn btn-primary" @onclick="SetList">Check your files</button>
+    <button class="btn btn-primary" @onclick="SetList">Check your selectedFiles</button> 
     <button class="ml-auto p2 btn btn-primary" @onclick="DeleteFiles">Delete</button>
-    <button class="ml-auto p2 btn btn-primary" @onclick="configService.updateList">UpdateList</button>
+    @*<button class="ml-auto p2 btn btn-primary" @onclick="updateExtesionCheckedByFile">UpdateList</button>*@
 </div>
 
 
@@ -56,7 +57,7 @@
             </thead>
             <tbody>
                 
-                @if(files.Count == 0)
+                @if(selectedFiles.Count == 0)
                 {
                     <tr>
                         <td colspan="2"> </td>
@@ -67,7 +68,7 @@
                         <td colspan="2"> </td>
                     </tr>
                 }else {
-                    @foreach (var file in files)
+                    @foreach (var file in selectedFiles)
                     {
                         <tr>
                             <td>@file.Id</td>
@@ -85,14 +86,24 @@
     </div>
 </div>
 
+@code{
+    public void DeleteFiles() => managerService.DeleteFiles(selectedFiles);
+    private void SetList()
+    {
+        ClearList();
 
+        retrieveList();
+        StateHasChanged();
+    }
+
+}
 
 
 @code {
     #region RETRIEVE LIST
 
 
-    List<RetrievedFile> files = new List<RetrievedFile>();
+    List<RetrievedFile> selectedFiles = new List<RetrievedFile>();
     private List<Extesion> extensions = new List<Extesion>()
     {
         new Extesion{ Id = 1, name = "pdf"},
@@ -103,6 +114,18 @@
         new Extesion{ Id = 6, name = "exe"}
     };
     List<string> filteredFilePaths = new List<string>();
+
+    public void updateExtesionCheckedByFile()
+    {
+        managerService.updateList();
+        foreach (Extesion ext in managerService.GetExtesions())
+            extensions.Find(item => item.name == ext.name)!.isSelected = true;
+    }
+    protected override void OnInitialized()
+    {
+        updateExtesionCheckedByFile();
+    }
+
 
 
     private void allSelectedChecked(ChangeEventArgs e)
@@ -115,18 +138,11 @@
 
     private void ClearList()
     {
-        files = new List<RetrievedFile>();
+        selectedFiles = new List<RetrievedFile>();
         filteredFilePaths = new List<string>();
     }
 
-    private void SetList()
-    {
-        ClearList();
-
-        retrieveList();
-        StateHasChanged();
-    }
-
+    
     private void retrieveList()
     {
         List<string> selectedExt = extensions.Where(x => x.isSelected == true).Select(x => x.name).ToList();
@@ -153,7 +169,7 @@
             using MemoryStream ms = new MemoryStream();
             bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
 
-            files.Add(
+            selectedFiles.Add(
                 new RetrievedFile()
                     {
                         Id = counter,
@@ -168,20 +184,18 @@
 
     }
 
-    
-
     #endregion
 
 }
-
+@* 
 @code{
-    #region DELETE FILES
+    #region DELETE selectedFiles
 
-    public void DeleteFiles()
+    public void DeleteFiles(List<RetrievedFile> selectedFiles)
     {
         try
         {
-            foreach (var file in files)
+            foreach (var file in selectedFiles)
             {
                 if (file.isSelected)
                     File.Delete(filteredFilePaths[file.Id]);
@@ -195,7 +209,7 @@
     #endregion
 
 }
-
+ *@
 <style>
 
     label {

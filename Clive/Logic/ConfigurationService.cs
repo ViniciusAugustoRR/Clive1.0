@@ -7,36 +7,21 @@ using System.Threading.Tasks;
 
 namespace Clive.Logic
 {
-    public class ConfigurationService
+    public class ConfigurationService : IConfigurationService
     {
+        private const string IntervalKey = "IntervalMinutes";
 
-        List<RetrievedFile> files = new List<RetrievedFile>();
-        private List<Extesion> selectedExtesions = new List<Extesion>();
-        List<string> filteredFilePaths = new List<string>();
-
-        List<string> configFile =  File.ReadLines("C:\\Users\\jonhe\\OneDrive\\Documentos\\Clive\\cliveConfig.txt").ToList();
-
-        //Pegar configurações do arquivo de configurações
-        public void updateList()
+        public Task<int> GetIntervalMinutesAsync()
         {
-            var s = "";
-            foreach (var line in configFile) {
-                s += line;
-            }
-            return;
-            selectedExtesions.Clear();
-            selectedExtesions = new List<Extesion>() { };  //POPULATE LIST
-            
-            filteredFilePaths.Clear();
-            filteredFilePaths = new List<string>(); //POPULATE LIST 
+            int minutes = Preferences.Get(IntervalKey, 60); // default 60
+            return Task.FromResult(minutes);
         }
 
-
-        public void DeleteFiles()
+        public Task SetIntervalMinutesAsync(int minutes)
         {
-
+            Preferences.Set(IntervalKey, minutes);
+            return Task.CompletedTask;
         }
-    
     }
 
 

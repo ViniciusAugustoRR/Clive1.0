@@ -16,7 +16,8 @@ namespace Clive
                 });
 
             builder.Services.AddMauiBlazorWebView();
-            builder.Services.AddSingleton<ConfigurationService>();
+            builder.Services.AddSingleton<IConfigurationService, ConfigurationService>();
+            builder.Services.AddSingleton<ManagerService>();
 
 #if DEBUG
     		builder.Services.AddBlazorWebViewDeveloperTools();
